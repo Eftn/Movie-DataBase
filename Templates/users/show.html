@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.full_name }}{% endblock %}}
+
+{% block content %}
+ 
+<div class="row">
+
+  <div class="col-sm-10 col-12">
+
+    <h2 class="mt-4">Movies</h2>
+
+    <ul>
+      {% for movie in user.movie %}
+
+      <li>
+        <b><u>Title:</u></b>
+        {{ movie.title }}
+        <br>
+       <b> Actors:</b>
+        <small>{{ movie.actors }}</small>
+        <br>
+       <b> Plot:</b>
+        <small>{{ movie.plot }}</small>
+        <br>
+       
+      </li>
+
+  
+
+      <form>
+        {{form.hidden_tag()}}
+        <button class="btn btn-light"
+                formmethod="GET"
+                formaction="/movies/{{user.username}}/{{ movie.id }}/update">
+          Edit
+        </button>
+        <button class="btn btn-danger"
+                formmethod="POST"
+                formaction="/movies/{{ movie.id }}/delete">
+          Delete
+        </button>
+        <button class="btn btn-dark"
+                formmethod="POST"
+                formaction="/users/{{user.username}}/{{ movie.id }}/like" id="movie-form">
+          Click to Recommend This Movie
+        </button>
+      </form>
+
+      {% endfor %}
+    </ul>
+
+    <p>
+      <a href="/users/{{user.username}}/movies/new" class="btn btn-light">
+        Add New Movie
+      </a>
+    </p>
+
+    <form>
+     <button class="btn btn-danger btn-sm"
+              formaction="/users/{{ user.username }}"
+              formmethod="GET">
+        View Your Favorite List
+      </button>
+      <button class="btn btn-danger btn-sm"
+              formaction="/users/{{ user.username }}/delete"
+              formmethod="POST">
+        Delete Account
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

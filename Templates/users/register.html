@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Create User
+{% endblock %}
+
+{% block content %}
+
+<h1>Movie Database</h1>
+
+
+<form method="POST" id="user_form">
+
+  {{form.hidden_tag()}}
+
+  {% for field in form.errors %}
+  <div class="alert alert-danger">{{ field }}:
+    <ul>
+      {% for error in form.errors[field] %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+
+  {% for field in form if field.widget.input_type != 'hidden' %}
+
+  <div class="form-group ">
+    {{field.label(class="col-sm-35 col-form-label")}}
+    <div class="col-30">
+      {{field(class="form-control")}}
+    </div>
+  </div>
+
+  {% endfor %}
+
+  <button class=" btn btn-primary">Sign up!</button>
+</form>
+
+{% endblock %}

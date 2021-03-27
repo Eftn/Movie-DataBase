@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>See all the Movies Searched in the Database</h1>
+<ul>
+{% for movie in movies %}
+  <li>
+    <a class="p-3 text-white" href="/movies/{{ movie.id }}">
+    Movie: {{ movie.title }}</a>
+    <small>Searched By {{movie.username}}</small>
+  </li>
+{% endfor %}
+
+</ul>
+
+{% endblock %}
