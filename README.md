@@ -9,4 +9,4 @@ other users and a recently viewed link to show each user all the movies that hav
 This database uses postgresSQL, you will need to create the table movie before you load.
 Make sure to read the requirements and load everything that is needed.
 
-This was created by EFTN, I hope youe enjoy :)
+This was created by EFTN, I hope you enjoy :)
